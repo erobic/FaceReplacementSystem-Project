@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lipCenterButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lipCenterLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="chinEdgeButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="chinEdgeLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="chinEdgeLeftButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="chinEdgeLeftLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="chinEdgeRightButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="chinEdgeRightLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="rightEyeButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="leftEyeButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="rightEyeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="leftEyeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lipLeftEdgeButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lipLeftEdgeLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lipRightEdgeButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="leftEyeEdgeButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="leftEyeEdgeLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="lipRightEdgeLabel" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="rightEyeEdgeButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="rightEyeEdgeLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="curveEstimateButton" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="86" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="leftEyeButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="leftEyeLabel" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="rightEyeButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rightEyeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lipCenterButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lipCenterLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="chinEdgeButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="chinEdgeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="chinEdgeLeftButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="chinEdgeLeftLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="chinEdgeRightButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="chinEdgeRightLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lipLeftEdgeButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lipLeftEdgeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lipRightEdgeButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lipRightEdgeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="leftEyeEdgeButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="leftEyeEdgeLabel" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="rightEyeEdgeButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rightEyeEdgeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="81" max="32767" attributes="0"/>
+              <Component id="curveEstimateButton" min="-2" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="leftEyeButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="leftEye"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="leftEyeButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="leftEyeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Not Set"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="rightEyeButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="rightEye"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rightEyeButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="rightEyeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Not Set"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="lipCenterButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="lipCenter"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lipCenterButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lipCenterLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Not Set"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="chinEdgeButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="chinEdge"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chinEdgeButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="chinEdgeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Not Set"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="chinEdgeLeftButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="LeftChinEdge"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chinEdgeLeftButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="chinEdgeLeftLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Not Set"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="chinEdgeRightButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="RightChinEdge"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chinEdgeRightButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="chinEdgeRightLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Not Set"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="lipLeftEdgeButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="LeftLipEdge"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lipLeftEdgeButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lipLeftEdgeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Not Set"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="lipRightEdgeButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="RightLipEdge"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lipRightEdgeButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lipRightEdgeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Not Set"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="leftEyeEdgeButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="leftEyeEdge"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="leftEyeEdgeButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="leftEyeEdgeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Not Set"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="rightEyeEdgeButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="rightEyeEdge"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rightEyeEdgeButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="rightEyeEdgeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Not Set"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="curveEstimateButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="curveEstimate"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="curveEstimateButtonActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>
