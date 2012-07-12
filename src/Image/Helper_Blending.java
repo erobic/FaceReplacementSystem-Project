@@ -14,7 +14,7 @@ import java.util.List;
  * @author power
  */
 public class Helper_Blending {
-    public static BufferedImage BlendPoints(BufferedImage b,List<Point> points){
+    public static BufferedImage BlendPoints_Average(BufferedImage b,List<Point> points){
         
         Point []n=new Point[4];
         int size=points.size();
@@ -48,13 +48,6 @@ public class Helper_Blending {
         
         return ans;
     }
-//    private static int[] getAveragePixel(int[] center, int[] left, int[] right ){
-//        int [] a=new int[3];
-//        a[0]=(center[0]*4+left[0]+right[0])/6;
-//        a[1]=(center[1]*4+left[1]+right[1])/6;
-//        a[2]=(center[2]*4+left[2]+right[2])/6;
-//        return a;
-//    }
     
     //just converting a matrix to a BufferedImage
     public static BufferedImage maskToBinary(int[] [] mask,int width, int height){
