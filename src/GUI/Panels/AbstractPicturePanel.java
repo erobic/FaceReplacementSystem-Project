@@ -31,7 +31,6 @@ public class AbstractPicturePanel extends javax.swing.JPanel {
     public AbstractPicturePanel() {
         initComponents();
     }
-
     
     public void clear(){
         super.paint(this.getGraphics());

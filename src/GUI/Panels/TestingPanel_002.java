@@ -4,12 +4,12 @@
  */
 package GUI.Panels;
 
+import Helpers.ImageWarper;
 import Image.Helper_Blending;
 import Image.HistogramEQ;
 import Image.ImageProcessor;
 import Image.Image_002;
 import ShrinkingTest.ErosionClass;
-import facereplacementsystem.ImageWarper;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -42,7 +42,8 @@ public class TestingPanel_002 extends AbstractControlPanel {
         replaceFace = new javax.swing.JButton();
         warpFace = new javax.swing.JButton();
         shrink = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        HoleFilledImage = new javax.swing.JButton();
+        BlendEdge = new javax.swing.JButton();
 
         estimageSkinColor.setText("estimateSkinColor");
         estimageSkinColor.addActionListener(new java.awt.event.ActionListener() {
@@ -86,10 +87,17 @@ public class TestingPanel_002 extends AbstractControlPanel {
             }
         });
 
-        jButton1.setText("HoleFilledImage");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        HoleFilledImage.setText("HoleFilledImage");
+        HoleFilledImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                HoleFilledImageActionPerformed(evt);
+            }
+        });
+
+        BlendEdge.setText("BlendEdge");
+        BlendEdge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BlendEdgeActionPerformed(evt);
             }
         });
 
@@ -100,7 +108,8 @@ public class TestingPanel_002 extends AbstractControlPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(BlendEdge)
+                    .addComponent(HoleFilledImage)
                     .addComponent(shrink)
                     .addComponent(warpFace)
                     .addComponent(replaceFace)
@@ -125,8 +134,10 @@ public class TestingPanel_002 extends AbstractControlPanel {
                 .addGap(27, 27, 27)
                 .addComponent(shrink)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addComponent(HoleFilledImage)
+                .addGap(18, 18, 18)
+                .addComponent(BlendEdge)
+                .addContainerGap(90, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -185,15 +196,21 @@ public class TestingPanel_002 extends AbstractControlPanel {
         Image_002 targetImage=parent.targetImage;
         BufferedImage sourceFace=sourceImage.getFaceAccordingToSkinColorAndBoundaryFilling();
         
-        //parent.picturePanel.DrawImage(sourceFace);
-        
-        //BufferedImage masked=parent.targetImage.maskFaceImage(sourceFace);
         Point [] sourceFeaturePoints=sourceImage.getLocalFeaturePointArray();
         Point [] targetFeaturePoints=targetImage.getLocalFeaturePointArray();
-        BufferedImage warped=new ImageWarper(sourceFace, sourceFeaturePoints, targetFeaturePoints).runGet();//warpedImage
         
-       // masked = new ImageWarper(masked, sourceFeaturePoints, targetFeaturePoints).runGet();
-        parent.picturePanel.DrawImage(parent.targetImage.maskFaceImage(warped));
+               ImageWarper iw =new ImageWarper(sourceFace, sourceFeaturePoints, targetFeaturePoints);//warpedImage
+                BufferedImage warped=iw.runGet();
+        Point warpedChin=iw.getMappedPoint(sourceFeaturePoints[2]) ;
+        
+        System.err.println("THE source chin point is ("+sourceFeaturePoints[2].x+","+sourceFeaturePoints[2].y+")");
+        System.err.println("THE target chin point is ("+targetFeaturePoints[2].x+","+targetFeaturePoints[2].y+")");
+        System.err.println("THE warped chin point is ("+warpedChin.x+","+warpedChin.y+")");
+        
+        BufferedImage finalWarpedBlended=
+                Helper_Blending.getBlendedImage(warped, warpedChin, targetImage.originalImage, targetImage.chinPoint);
+        
+        parent.picturePanel.DrawImage(finalWarpedBlended);
     }//GEN-LAST:event_warpFaceActionPerformed
 
     private void shrinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shrinkActionPerformed
@@ -205,7 +222,7 @@ public class TestingPanel_002 extends AbstractControlPanel {
         parent.picturePanel.DrawImage(shrinked);
     }//GEN-LAST:event_shrinkActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void HoleFilledImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HoleFilledImageActionPerformed
         Image_002 source=parent.ActiveImage;
         Rectangle rectangle=source.rectangle;
         int width=rectangle.width;
@@ -219,13 +236,19 @@ public class TestingPanel_002 extends AbstractControlPanel {
         //return sconvertMaskToFace(holeFillAccordingToBoundary(erectMatrix,width,height));
         
         parent.picturePanel.DrawImage(Helper_Blending.maskToBinary(erectMatrix, width, height));
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_HoleFilledImageActionPerformed
+
+    private void BlendEdgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlendEdgeActionPerformed
+//        BufferedImage i=Helper_Blending.BlendPoints_Average(parent.ActiveImage.originalImage, parent.ActiveImage.leftLowerBoundary);
+//        parent.picturePanel.DrawImage(i);
+    }//GEN-LAST:event_BlendEdgeActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BlendEdge;
     private javax.swing.JButton HistogramEqualization;
+    private javax.swing.JButton HoleFilledImage;
     private javax.swing.JButton estimageSkinColor;
     private javax.swing.JButton faceMask;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton replaceFace;
     private javax.swing.JButton shrink;
     private javax.swing.JButton warpFace;

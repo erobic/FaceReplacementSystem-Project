@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package facereplacementsystem;
+package Helpers;
 
 import Helpers.FloatingCoordinate;
 import java.awt.Color;
@@ -89,26 +89,21 @@ public class Interpolator {
 
         try {
             int rgb00 = originalImage.getRGB(floorX, floorY);
-            Color col00 = new Color(rgb00);
-            
-            //System.out.println("gfdxfthfjgj"+origin);
+            Color col00 = new Color(rgb00,true);
             int rgb01 = originalImage.getRGB(floorX + 1, floorY);
-            Color col01 = new Color(rgb01);
-
+            Color col01 = new Color(rgb01,true);
             int rgb10 = originalImage.getRGB(floorX, floorY + 1);
-            Color col10 = new Color(rgb10);
-
+            Color col10 = new Color(rgb10,true);
             int rgb11 = originalImage.getRGB(floorX + 1, floorY + 1);
-            Color col11 = new Color(rgb11);
+            Color col11 = new Color(rgb11,true);
 
             int r = (int) (col00.getRed() * c00 + col01.getRed() * c01 + col10.getRed() * c10 + col11.getRed() * c11);
             int g = (int) (col00.getGreen() * c00 + col01.getGreen() * c01 + col10.getGreen() * c10 + col11.getGreen() * c11);
             int b = (int) (col00.getBlue() * c00 + col01.getBlue() * c01 + col10.getBlue() * c10 + col11.getBlue() * c11);
-            //int a = (int) (col00.getAlpha() * c00 + col01.getAlpha() * c01 + col10.getAlpha() * c10 + col11.getAlpha() * c11);
-            int a = (int)(col00.getAlpha());
-            return new Color(r, g, b, 0);
+            int a = (int) (col00.getAlpha() * c00 + col01.getAlpha() * c01 + col10.getAlpha() * c10 + col11.getAlpha() * c11);
+            return new Color(r, g, b, a);
         } catch (Exception e) {
-            return new Color(255, 0, 0,120);
+            return new Color(0, 0, 0,0);
         }
     }
 

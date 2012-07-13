@@ -98,16 +98,18 @@ public class Image_002 {
     public void drawEdgeCurve(Graphics g){
         g.setColor(Color.red);
         Point p;
-        for(int i=0;i<this.lowBoundary.size();i++){
-            p=lowBoundary.get(i);
+//        for(int i=0;i<this.lowBoundary.size();i++){
+//            p=lowBoundary.get(i);
+//            g.drawOval(p.x, p.y, 1, 1);
+//        }
+        List <Point> a=this.rightLowereBoundary;
+        for(int i=0;i<a.size();i++){
+            p=a.get(i);
             g.drawOval(p.x, p.y, 1, 1);
         }
-        for(int i=0;i<this.leftLipToLeftChinEdge.size();i++){
-            p=leftLipToLeftChinEdge.get(i);
-            g.drawOval(p.x, p.y, 1, 1);
-        }
-        for(int i=0;i<this.rightLipTorightChinEdge.size();i++){
-            p=rightLipTorightChinEdge.get(i);
+        a=this.leftLowerBoundary;
+        for(int i=0;i<a.size();i++){
+            p=a.get(i);
             g.drawOval(p.x, p.y, 1, 1);
         }
     }
@@ -191,18 +193,28 @@ public class Image_002 {
                 }
             }
         //low boundary=left lip edge to right chin edge
-        for(int i=0;i<this.lowBoundary.size();i++){
-            int ystart=lowBoundary.get(i).y;
-            int x=lowBoundary.get(i).x;
+        List<Point> list=this.leftLowerBoundary;
+        for(int i=0;i<list.size();i++){
+            int ystart=list.get(i).y;
+            int x=list.get(i).x;
             for(int j=ystart;j<rectangle.y+rectangle.height;j++){
                 wrf.setPixel(x, j, black);
             }
         }
+        list=this.rightLowereBoundary;
+        for(int i=0;i<list.size();i++){
+            int ystart=list.get(i).y;
+            int x=list.get(i).x;
+            for(int j=ystart;j<rectangle.y+rectangle.height;j++){
+                wrf.setPixel(x, j, black);
+            }
+        }/*
         for(int i=0;i<this.leftChinEdge.x;i++){
             for(int j=this.leftChinEdge.y;j<face.getHeight();j++){
                 wrf.setPixel(i, j, black);
             }
         }
+        /*
         for(int i=this.rightChinEdge.x;i<face.getWidth();i++){
             for(int j=rightChinEdge.y;j<face.getHeight();j++){
                 wrf.setPixel(i, j, black);
@@ -281,13 +293,16 @@ public class Image_002 {
         return mi;
         
     }
+    public BufferedImage maskWarpedFaceImage(BufferedImage face){
+        BufferedImage mi=ImageProcessor.deepCopy(originalImage);
+        Graphics g=mi.getGraphics();
+        //g.drawImage(face, rectangle.x, rectangle.y, null);
+        g.drawImage(face, rectangle.x, rectangle.y, rectangle.width, rectangle.height, null);
+        return mi;
+    }
     
     public int[][] getMaskMatrix(){
         BufferedImage b=this.getFaceImageAccordingToYCbCr();//size of rectangle argb image
-//        ErosionClass c=new ErosionClass(10);
-//        BufferedImage b=c.apply(
-//                (originalImage.getSubimage(rectangle.x, rectangle.y, rectangle.width, rectangle.height)));
-//        b=ImageProcessor.analyseSkin(b);
         int [][] mask = new int[b.getWidth()][b.getHeight()];
         int width=b.getWidth();
         int height=b.getHeight();
@@ -509,7 +524,23 @@ public class Image_002 {
             this.rightLipEdge=new Point(304,371);//.x=304;this.rightLipEdge.y=371;
             estimateCurve(); 
             System.out.println("The curve is estimated");
-        }else{
+        }else if(path.equals("C:\\Users\\power\\Documents\\analysis images\\5693_119262355770_574905770_2899491_1487701_n.jpg")){
+            System.out.println("Source set to \n"+path+"\n"+"5213_101478120770_574905770_2616753_3748943_n.jpg");
+            this.rectangle=new Rectangle();
+            rectangle.x=115;rectangle.y=84;rectangle.width=232;rectangle.height=256;
+            this.leftEye=new Point(175,187);//.x=178;this.leftEye.y=285;
+            this.rightEye=new Point(244,179);//.x=248;this.rightEye.y=282;
+            this.lipCenter=new Point(201,264);//.x=223;this.lipCenter.y=361;
+            this.chinPoint=new Point(211,331);//.x=225;this.chinPoint.y=425;
+            this.leftChinEdge=new Point(172,316);//.x=185;this.leftChinEdge.y=417;
+            this.leftLipEdge=new Point(146,280);//.x=149;this.leftChinEdge.y=382;
+            this.rightChinEdge=new Point(257,311);//.x=271;this.rightChinEdge.y=405;
+            this.rightLipEdge=new Point(309,271);//.x=304;this.rightLipEdge.y=371;
+            estimateCurve(); 
+            System.out.println("The curve is estimated");
+        }
+        
+        else{
             System.out.println("the path is "+path);
         }
         
