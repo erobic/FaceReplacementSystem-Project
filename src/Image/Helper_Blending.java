@@ -62,14 +62,21 @@ public class Helper_Blending {
         replacedImageRaster=replacedImage.getRaster();
         BufferedImage finalImage=ImageProcessor.deepCopy(replacedImage);
         toBlendImage=finalImage.getRaster();
-        int blendLimit=20;
+        int blendLimit=5;
         for(int i=0;i<length;i++){
             p=points.get(i);
             if(p!=null){
                 try{//blending in x axis
                     for(int j=-blendLimit;j<blendLimit;j++){
-                        BlendPixel3(p.x+j,p.y);
-                        BlendPixel3(p.x,p.y+j);
+                        for(int k=-blendLimit;k<blendLimit;k++){
+                            if(j==0&&k==0){
+                                BlendPixel4Log(p.x,p.y);
+                                BlendPixel4Log(p.x,p.y);
+                            }else{
+                                BlendPixel3(p.x+j, p.y);
+                                BlendPixel3(p.x, p.y+k);
+                            }
+                        }
                     }
                 }catch(Exception e){
                     System.out.println("There is an error in BlendPoints_Average2 ");
@@ -97,7 +104,7 @@ public class Helper_Blending {
     private static void BlendPixel3(int x,int y){
         //blends the pixel according to 10 connectivity
         int [] avg=new int[3];avg[0]=255;avg[1]=255;avg[2]=255;
-        int neighbourSize=5;//Note neighbourSize =1 implies eightconnectivity
+        int neighbourSize=3;//Note neighbourSize =1 implies eightconnectivity
         List<int[]> area=new ArrayList();
         for(int i=-neighbourSize;i<neighbourSize;i++){
             for(int j=-neighbourSize;j<neighbourSize;j++){
@@ -107,7 +114,17 @@ public class Helper_Blending {
         toBlendImage.setPixel(x, y,getAverage2(area) );
     }
     private static void BlendPixel4Log(int x, int y){
+        //logh 1=.7816, 1-logh 1=0.2384
+        int [] abc=new int[3];abc[0]=255;abc[1]=255;abc[2]=255;
+        int[] left=replacedImageRaster.getPixel(x-1, y, abc);
+        int[] right=replacedImageRaster.getPixel(x+1, y, abc);
+        int[] up=replacedImageRaster.getPixel(x, y-1, abc);
+        int[] down=replacedImageRaster.getPixel(x, y+1, abc);
+        abc[0]=(int) (0.7816*(left[0]+down[0])+0.2384*(right[0]+up[0]));
+        abc[1]=(int) (0.7816*(left[1]+down[1])+0.2384*(right[1]+up[1]));
+        abc[2]=(int) (0.7816*(left[2]+down[2])+0.2384*(right[2]+up[2]));
         
+        toBlendImage.setPixel(x, y, abc);
     }
     private static int[] getAverage(int [] left, int[] main, int [] right){
         int [] ans=new int[3];
@@ -120,17 +137,20 @@ public class Helper_Blending {
          //the int[] is pixel value in rgb format
         int [] ans=new int[3];ans[0]=0;ans[1]=0;ans[2]=0;
         int length=pixelrgbValues.size();
-        
+        int count=1;
         int[] pointer=null;
         for(int i=0;i<length;i++){
             pointer=pixelrgbValues.get(i);
+            if(pointer[0]-100<pointer[1]){//to reject the totally red pixels
             ans[0]+=pointer[0];
             ans[1]+=pointer[1];
             ans[2]+=pointer[2];
+            count++;
+            }
         }
-        ans[0]/=length;
-        ans[1]/=length;
-        ans[2]/=length;
+        ans[0]/=count;
+        ans[1]/=count;
+        ans[2]/=count;
         return ans;
     }
     
@@ -140,6 +160,15 @@ public class Helper_Blending {
         //extract boundary of the passed face rgba image
         //List<Point> boundary=Helper_Blending.extractBoundaryVerticalHorizontal(faceOnly);
         List<Point> boundary=Helper_Blending.extractBoundaryVerticalHorizontal(faceOnly);
+        int length=boundary.size();
+        
+        ///////To Replace the reddish region around the boundary
+        Color col=new Color(255,255,255,0);
+        Point pointer;
+        for(int i=0;i<length;i++){
+            pointer=boundary.get(i);
+            faceOnly.setRGB(pointer.x<0?0:pointer.x, pointer.y<0?0:pointer.y, col.getRGB());
+        }
         BufferedImage result=ImageProcessor.deepCopy(targetImage);
         Graphics g=result.getGraphics();
         System.out.println("The target chinPoint is ("+targetChinPoint.x+","+targetChinPoint.y+")");
@@ -195,7 +224,7 @@ public class Helper_Blending {
         int width=warpedImage.getWidth();
         int height=warpedImage.getHeight();
         int[][] mat=new int[warpedImage.getWidth()][warpedImage.getHeight()];
-        
+        //Color col=new Color(255,255,255,0);
         for(int i=0;i<width;i++)
             for(int j=0;j<height;j++){
                 Color c=new Color(warpedImage.getRGB(i, j),true);
@@ -203,6 +232,7 @@ public class Helper_Blending {
                     mat[i][j]=0;
                 }else{
                     mat[i][j]=1;
+//                    warpedImage.setRGB(i, j,col.getRGB());
                 }
             }
         //binary matrix is ready
